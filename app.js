@@ -25,15 +25,15 @@ window.addEventListener('load', () => {
           temperatureDescription.textContent = summary
           locationTimezone.textContent = data.timezone
 
-          setIcons(icon)
+          setIcons(icon, document.querySelector('.icon'))
         })
     })
   }
 
   function setIcons(icon, iconID) {
-    const skycons = new skycons({ color: 'white' })
-    const currentIcon = icon.repace(/-/g, '_').toUpperCase()
+    const skycons = new Skycons({ color: 'white' })
+    const currentIcon = icon.replace(/-/g, '_').toUpperCase()
     skycons.play()
-    return skycons.det(iconID, Skycons[currentIcon])
+    return skycons.set(iconID, Skycons[currentIcon])
   }
 })
