@@ -6,6 +6,8 @@ window.addEventListener('load', () => {
   )
   let temperatureDegree = document.querySelector('.degree__section-temperature')
   let locationTimezone = document.querySelector('.location__timezone')
+  let degreeSection = document.querySelector('.degree__section')
+  let degreeUnit = document.querySelector('.degree__section-unit')
 
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(position => {
@@ -25,7 +27,19 @@ window.addEventListener('load', () => {
           temperatureDescription.textContent = summary
           locationTimezone.textContent = data.timezone
 
+          let celcius = (temperature - 32) * (5 / 9)
+
           setIcons(icon, document.querySelector('.icon'))
+
+          degreeSection.addEventListener('click', () => {
+            if (degreeUnit.textContent === 'F') {
+              degreeUnit.textContent = 'C'
+              temperatureDegree.textContent = Math.floor(celcius)
+            } else {
+              degreeUnit.textContent = 'F'
+              temperatureDegree.textContent = temperature
+            }
+          })
         })
     })
   }
