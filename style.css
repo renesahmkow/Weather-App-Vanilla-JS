@@ -31,6 +31,7 @@ body {
 .degree__section {
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 
 .degree__section p {
@@ -38,6 +39,6 @@ body {
   font-size: 30px;
 }
 
-.degree__section-tepmerature {
+.degree__section-temperature {
   font-size: 40px;
 }
